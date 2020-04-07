@@ -23,9 +23,15 @@
     group: airflow
     state: directory
 
-- name: debug print
-  debug:
-    msg: $(ls)
+# - name: debug print
+#   debug:
+#     msg: $(ls)
+
+- name: print to stdout
+  command: echo "$(ls)"
+  register: hello
+
+- debug: msg="{{ hello.stdout }}"
 
 - name: set airflow home dir as environment variable
   lineinfile:
