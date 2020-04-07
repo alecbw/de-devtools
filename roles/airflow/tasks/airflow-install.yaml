@@ -23,6 +23,10 @@
     group: airflow
     state: directory
 
+- name: debug print
+  debug:
+    msg: $(ls)
+
 - name: set airflow home dir as environment variable
   lineinfile:
     path: /etc/environment
